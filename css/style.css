@@ -16,9 +16,12 @@ h1{
 }
 
 .inicio{
-  background-color: green;
+  background-image: url(../flechas/init1.png);
+  background-size: 100%
+
 }
 
 .final{
-  background-color: red;
+  background-image: url(../flechas/init.png);
+  background-size: 100%;
 }
