@@ -61,6 +61,7 @@ right.onclick = function () {
   if (click==4){
     click = 0;
   }
+  console.log(click);
 
 }
 
@@ -68,6 +69,7 @@ left.onclick = function () {
   arrayMapa[x][y].style.backgroundImage = "url("+directions[click-2]+")"
   click = click - 1;
   if (click==1){
-    click = 4;
+    click = 5;
   }
+  console.log(click);
 }
