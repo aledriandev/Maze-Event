@@ -1,4 +1,8 @@
 var tablero = document.getElementById('tablero');
+var right = document.getElementById('right');
+var left = document.getElementById('left');
+var move = document.getElementById('move');
+var play = document.getElementById('play');
 
 var mapa=[
 "******************",
@@ -13,6 +17,8 @@ var mapa=[
 "*o*__*________**W*",
 "******************"];
 
+var directions = ['flechas/left.png',"flechas/up.png","flechas/right.png","flechas/down.png"]
+
 var arrayMapa = [];
 for (var i = 0; i < mapa.length; i++) {
   for (var j = 0; j < mapa[i].length; j++) {
@@ -20,35 +26,48 @@ for (var i = 0; i < mapa.length; i++) {
   }
   arrayMapa.push(M);
 }
-var arrayMapaLineal = [];
-for (var i = 0; i < arrayMapa.length; i++) {
-  arrayMapaLineal=arrayMapaLineal.concat(arrayMapa[i])
-}
 
+var n = mapa.length;
+var m = mapa[0].length;
 
-function generarTabla() {
-  var n = mapa.length;
-  var m = mapa[0].length;   
-  var tabla = document.createElement('table');
-  tabla.border = "0";
-  for (var i = 0; i < n; i++) {
-    var fila = document.createElement('tr');
-    for (var j = 0; j < m; j++) {
-      var celda = document.createElement('td');
-      if (mapa[i][j] == "*") {
-        celda.setAttribute('class', 'pared');
-      }else if(mapa[i][j] == "o") {
-        celda.setAttribute('class','inicio')
-      }else if(mapa[i][j] == "W") {
-        celda.setAttribute('class','final')
-      }else{
-        celda.setAttribute('class','blanco');
-      }
-      fila.appendChild(celda);
+var tabla = document.createElement('table');
+tabla.border = "0";
+for (var i = 0; i < n; i++) {
+  var fila = document.createElement('tr');
+  for (var j = 0; j < m; j++) {
+    var celda = document.createElement('td');
+    if (mapa[i][j] == "*") {
+      celda.setAttribute('class', 'pared');
+    }else if(mapa[i][j] == "o") {
+      celda.setAttribute('class','inicio')
+      var x = i;
+      var y = j;
+    }else if(mapa[i][j] == "W") {
+      celda.setAttribute('class','final')
+    }else{
+      celda.setAttribute('class','blanco');
     }
-    tabla.appendChild(fila);
+    fila.appendChild(celda);
+    arrayMapa[i][j] = celda;
   }
-  tablero.appendChild(tabla);
+  tabla.appendChild(fila);
+}
+tablero.appendChild(tabla);
+
+var click = 0;
+right.onclick = function () {
+  arrayMapa[x][y].style.backgroundImage = "url("+directions[click]+")"
+  click = click + 1;
+  if (click==4){
+    click = 0;
+  }
+
 }
 
-generarTabla();
+left.onclick = function () {
+  arrayMapa[x][y].style.backgroundImage = "url("+directions[click]+")"
+  click = click - 1;
+  if (click==-1){
+    click = 3;
+  }
+}
