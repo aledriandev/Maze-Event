@@ -5,6 +5,8 @@ td {
 
 table{
   border-spacing: 0px;
+  width: 756px;
+  height: 462px;
 }
 h1{
   color: grey;
@@ -34,4 +36,15 @@ img{
   width: 40px;
   height: 40px;
   size: 100%;
+}
+
+button{
+    width: 100px;
+    height: 30px;
+    padding: 0px 0 0 0;
+    margin: 0 auto;
+    background: #79d8c5;
+    border: 5px solid #15a588;
+    border-radius: 20px;
+
 }
