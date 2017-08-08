@@ -3,6 +3,7 @@ var right = document.getElementById('right');
 var left = document.getElementById('left');
 var move = document.getElementById('move');
 var play = document.getElementById('play');
+var complete = document.getElementById('complete')
 
 var mapa=[
 "******************",
@@ -106,16 +107,9 @@ move.onclick = function () {
   if (click == 3)
     mover(1,0,click);  
   if (click == 0)
-    mover(0,1,click);
+    mover(0,-1,click);
 }
 
-/*
-left.onclick = function () {
-  arrayMapa[x][y].style.backgroundImage = "url("+directions[click-2]+")"
-  click = click - 1;
-  if (click==1){
-    click = 5;
-  }
-  console.log(click);
+complete.onclick = function(){
+  
 }
-*/
