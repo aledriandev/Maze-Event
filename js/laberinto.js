@@ -80,18 +80,39 @@ right.onclick = function () {
 
 
 var init = document.getElementsByClassName("inicio")[0]
+var finit = document.getElementsByClassName("final")[0]
 move.onclick = function () {
   if (click == 1 && mapa[x-1][y]=="_"){
     arrayMapa[x-1][y].style.backgroundImage = "url("+directions[1]+")";
     arrayMapa[x][y].style.backgroundImage = "none";
     init.style.backgroundImage = "url(flechas/init1.png)";
+    finit.style.backgroundImage = "url(flechas/init.png)";
     x=x-1;
   }
   if (click == 2 && mapa[x][y+1]=="_"){
     arrayMapa[x][y+1].style.backgroundImage = "url("+directions[2]+")";
     arrayMapa[x][y].style.backgroundImage = "none";
     init.style.backgroundImage = "url(flechas/init1.png)";
+    finit.style.backgroundImage = "url(flechas/init.png)";
     y=y+1;
+  }
+  if (click == 3 && (mapa[x+1][y]=="_" || mapa[x+1][y]=="W" )){
+    arrayMapa[x+1][y].style.backgroundImage = "url("+directions[3]+")";
+    arrayMapa[x][y].style.backgroundImage = "none";
+    init.style.backgroundImage = "url(flechas/init1.png)";
+    finit.style.backgroundImage = "url(flechas/init.png)";
+
+    if( mapa[x+1][y]=="W" ){
+      alert("Ganaste...!")
+    }
+    x=x+1;
+  }
+  if (click == 0 && mapa[x][y-1]=="_"){
+    arrayMapa[x][y-1].style.backgroundImage = "url("+directions[0]+")";
+    arrayMapa[x][y].style.backgroundImage = "none";
+    init.style.backgroundImage = "url(flechas/init1.png)";
+    finit.style.backgroundImage = "url(flechas/init.png)";
+    y=y-1;
   }
 }
 
