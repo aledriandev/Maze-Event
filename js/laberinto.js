@@ -88,7 +88,7 @@ function mover(a,b,direccion){
       finit.style.backgroundImage = "url(flechas/init.png)";
 
       if( mapa[x+a][y+b]=="W" ){
-        alert("Ganaste...!")
+        alert("Ganaste...!");
       }
       x=x+a;
       y=y+b;
@@ -110,6 +110,30 @@ move.onclick = function () {
     mover(0,-1,click);
 }
 
-complete.onclick = function(){
-  
+function completo(){
+  px=x;
+  py=y;
+  right.click();
+  move.click();
+  if(x==px && y==py){
+    left.click();
+    move.click();
+  }
+  if(x==px && y==py){
+    left.click();
+    move.click();
+  }
+  if(x==px && y==py){
+    left.click();
+    move.click();
+  }
+  if( mapa[x][y]=="W" ){
+    clearInterval(parar);
+  }
 }
+
+var parar;
+complete.onclick = function(){
+  parar= setInterval(completo,100);
+}
+
