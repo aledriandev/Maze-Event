@@ -54,17 +54,39 @@ for (var i = 0; i < n; i++) {
 }
 tablero.appendChild(tabla);
 
-var click = 0;
-right.onclick = function () {
-  arrayMapa[x][y].style.backgroundImage = "url("+directions[click]+")"
-  click = click + 1;
-  if (click==4){
-    click = 0;
-  }
-  console.log(click);
 
+var click = 0;
+
+left.onclick = function () {
+  
+  if (click<= 0){
+    click = 4;
+  }
+  arrayMapa[x][y].style.backgroundImage = "url("+directions[click-1]+")";
+  click = click - 1;
+  console.log(click);
 }
 
+right.onclick = function () {
+
+  if (click >= 3){
+    click = -1;
+  }  
+  arrayMapa[x][y].style.backgroundImage = "url("+directions[click+1]+")";
+  click = click + 1;
+  
+  console.log(click);
+}
+
+
+
+move.onclick = function () {
+  if (click == 2){
+    arrayMapa[x-1][y].style.backgroundImage = "url("+directions[1]+")";
+  }
+}
+
+/*
 left.onclick = function () {
   arrayMapa[x][y].style.backgroundImage = "url("+directions[click-2]+")"
   click = click - 1;
@@ -73,3 +95,4 @@ left.onclick = function () {
   }
   console.log(click);
 }
+*/
